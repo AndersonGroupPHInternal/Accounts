@@ -1,6 +1,7 @@
 ﻿using AccountsData;
 using AccountsEntity;
 using AccountsModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,15 +15,28 @@ namespace AccountsFunction
         {
             _iDRole = iDRoles;
         }
-        
+
         public FRole()
         {
             _iDRole = new DRole();
 
         }
         #region Create
-        #endregion
+        public Role Create(int createdBy, Role role)
+        {
 
+            var eRole = ERole(role);
+            eRole.CreatedDate = DateTime.Now;
+            eRole.CreatedBy = createdBy;
+            eRole = _iDRole.Insert(eRole);
+            return Role(eRole);
+        }
+        #endregion
+        public Role Read(int roleId)
+        {
+            var eRole = _iDRole.Read<ERole>(a => a.RoleId == roleId);
+            return Role(eRole);
+        }
         #region Read
         public List<Role> Read(string sortBy)
         {
@@ -30,22 +44,59 @@ namespace AccountsFunction
             return Roles(eRoles);
         }
 
-        public List<Role> Read(int userId, string sortBy)
+        public List<Role> Read(int roleId, string sortBy)
         {
-            var eRoles = _iDRole.Read<ERole>(a => a.UserRoles.Any(b => b.User.UserId == userId), sortBy);
+            var eRoles = _iDRole.Read<ERole>(a => a.UserRoles.Any(b => b.Role.RoleId == roleId), sortBy);
             return Roles(eRoles);
         }
         #endregion
 
         #region Update
-
+        public Role Update(int updatedBy, Role role)
+        {
+            var eRole = ERole(role);
+            eRole.UpdatedDate = DateTime.Now;
+            eRole.UpdatedBy = updatedBy;
+            eRole = _iDRole.Update(eRole);
+            return Role(eRole);
+        }
         #endregion
 
         #region Delete
-
+        public void Delete(int roleId)
+        {
+            _iDRole.Delete<ERole>(a => a.RoleId == roleId);
+        }
         #endregion
 
         #region Other Function
+        private ERole ERole(Role role)
+        {
+            return new ERole
+            {
+                CreatedDate = role.CreatedDate,
+                UpdatedDate = role.UpdatedDate,
+
+                CreatedBy = role.CreatedBy,
+                UpdatedBy = role.UpdatedBy,
+                RoleId = role.RoleId,
+                Name = role.Name
+            };
+        }
+
+        private Role Role(ERole eRole)
+        {
+            return new Role
+            {
+                CreatedDate = eRole.CreatedDate,
+                UpdatedDate = eRole.UpdatedDate,
+
+                CreatedBy = eRole.CreatedBy,
+                UpdatedBy = eRole.UpdatedBy,
+                RoleId = eRole.RoleId,
+                Name = eRole.Name
+            };
+        }
         private List<Role> Roles(List<ERole> eRoles)
         {
             return eRoles.Select(a => new Role

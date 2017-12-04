@@ -15,9 +15,7 @@
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
-
         vm.UpdateEmployee = UpdateEmployee;
-
         vm.Delete = Delete;
         
         function GoToUpdatePage(userId) {
