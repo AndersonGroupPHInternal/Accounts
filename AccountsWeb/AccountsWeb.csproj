@@ -562,6 +562,10 @@
     <Content Include="Views\User\Update.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Update.cshtml" />
+    <Content Include="Views\Role\_Role.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

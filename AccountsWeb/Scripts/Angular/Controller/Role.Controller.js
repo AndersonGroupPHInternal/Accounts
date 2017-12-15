@@ -5,9 +5,9 @@
         .module('App')
         .controller('RoleController', RoleController);
 
-    RoleController.$inject = ['$filter', 'RoleService'];
+    RoleController.$inject = ['$filter', '$window','RoleService'];   //changed
 
-    function RoleController($filter, RoleService) {
+    function RoleController($filter,$window, RoleService) {
         var vm = this;
 
         vm.UserId;
@@ -16,12 +16,24 @@
         vm.Roles = [];
         
         vm.Initialise = Initialise;
+        vm.GoToUpdatePage = GoToUpdatePage;  // added
+        vm.GoToUpdateRole = UpdateRole;     //added
+        vm.Delete = Delete;                 //added
 
         function Initialise(userId) {
             vm.UserId = userId;
             Read();
+            if(vm.UserId != undefined) //added
             ReadAssignedRole();
         }
+
+        function GoToUpdatePage(roleId) {         //added
+            $window.location.href = '../Role/Update/' + roleId;         //added
+        }                           //added
+
+        function UpdateRole(role) {         //added
+            role.AssignedRoles = $filter('filter')(vm.AssignedRoles, { roleId: role.RoleId })[0];   //added
+        }                           //added
 
         function Read() {
             RoleService.Read()
@@ -56,5 +68,22 @@
 
                 });
         }
-    }
+
+
+        function Delete(roleId) {                   //added
+            RoleService.Delete(roleId)                  //added
+                .then(function (response) {         //added
+                    Read();                 //added
+                })                          //added
+                .catch(function (data, status) {       //added
+                    new PNotify({           //added
+                        title: status,      //added
+                        text: data,             //added
+                        type: 'error',              //added
+                        hide: true,                 //added
+                        addclass: "stack-bottomright"   //added
+                    });             //added
+                });                     //added
+        }                   //added
+    }                  
 })();

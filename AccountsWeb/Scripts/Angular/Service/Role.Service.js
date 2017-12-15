@@ -10,7 +10,8 @@
     function RoleService($http) {
         return {
             Read: Read,
-            ReadAssignedRole: ReadAssignedRole
+            ReadAssignedRole: ReadAssignedRole,
+            Delete: Delete
         }
 
         function Read() {
@@ -28,5 +29,12 @@
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }
+        function Delete(roleId) {                       //added
+            return $http({                              //added
+                method: 'DELETE',                       //added
+                url: '/Role/Delete/' + roleId,          //added                 
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }    //added
+            });                 //added
+        }                       //added
     }
 })();
