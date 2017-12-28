@@ -14,7 +14,8 @@ namespace AccountsContext
             context.Roles.Add(
                 new ERole
                 {
-                    Name = "AccountAdministrator"
+                    Name = "AccountAdministrator",
+                    Description = "Admin of Account"
                 });
             base.Seed(context);
         }

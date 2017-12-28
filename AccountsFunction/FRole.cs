@@ -78,11 +78,12 @@ namespace AccountsFunction
             {                                                    //added
                 CreatedDate = role.CreatedDate,                  //added
                 UpdatedDate = role.UpdatedDate,                  //added
-                        
+                   
                 CreatedBy = role.CreatedBy,                      //added
                 UpdatedBy = role.UpdatedBy,                      //added
                 RoleId = role.RoleId,                            //added
-                Name = role.Name                                 //added
+                Name = role.Name,                                 //added
+                Description = role.Description
             };                                                   //added
         }                                                        //added
 
@@ -96,7 +97,8 @@ namespace AccountsFunction
                 CreatedBy = eRole.CreatedBy,                    //added
                 UpdatedBy = eRole.UpdatedBy,                       //added
                 RoleId = eRole.RoleId,                          //added
-                Name = eRole.Name                                  //added
+                Name = eRole.Name,                                  //added
+                Description = eRole.Description
             };                                                     //added
         }                                                       //added
         private List<Role> Roles(List<ERole> eRoles)
@@ -111,7 +113,8 @@ namespace AccountsFunction
                 RoleId = a.RoleId,
                 UpdatedBy = a.UpdatedBy,
 
-                Name = a.Name
+                Name = a.Name,
+                Description =  a.Description
             }).ToList();
         }
         #endregion

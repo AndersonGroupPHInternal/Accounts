@@ -15,6 +15,9 @@ namespace AccountsEntity
         [StringLength(20)]
         public string Name { get; set; }
 
+        [StringLength(50)]
+        public string Description { get; set; }
+
         public ICollection<EUserRole> UserRoles { get; set; }
     }
 }

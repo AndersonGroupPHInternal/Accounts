@@ -13,7 +13,8 @@
             <table class="table table-hover table-sm table-bordered">
                 <thead>
                     <tr class="thead-inverse">
-                        <th>Role Descriptions</th>
+                        <th>Role</th>
+                        <th>Description</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -21,6 +22,10 @@
                     <tr class="clickableRow" ng-repeat="role in model.Roles" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(role.RoleId)" ng-init="model.UpdateRole(role)">
                         <td>
                             <span ng-bind="role.Name"></span>
+                        </td>
+
+                        <td>
+                            <span ng-bind="role.Description"></span>
                         </td>
 
                         <td ng-click="$event.originalEvent.dropdown = true">
