@@ -9,7 +9,7 @@
 
     function UserController($filter, $window, EmployeeService, UserService) {
         var vm = this;
-
+        vm.EmployeeId;
         vm.Employees = [];
         vm.Users = [];
 
@@ -33,6 +33,13 @@
             EmployeeService.Read()
                 .then(function (response) {
                     vm.Employees = response.data;
+                    if (vm.EmployeeId) {
+                        UpdateEmployee();
+                    }
+                    else {
+                        Read();
+                        ReadEmployees();
+                    }
                 })
                 .catch(function (data, status) {
                     new PNotify({
@@ -43,7 +50,7 @@
                         addclass: "stack-bottomright"
                     });
 
-                });
+                }); 
         }
 
         function Read() {
