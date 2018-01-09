@@ -23,6 +23,7 @@ namespace AccountsFunction
 
         #region Delete
         void Delete(int roleId);
+      
         #endregion
 
         #region Other Function

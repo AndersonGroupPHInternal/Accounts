@@ -6,6 +6,7 @@ using System.Web.Mvc;
 namespace AccountsWeb.Controllers
 {
     [CustomAuthorize(AllowedRoles = new string[] { "AccountAdministrator"})]
+
     public class RoleController : BaseController
     {
         private IFRole _iFRole;
@@ -39,6 +40,7 @@ namespace AccountsWeb.Controllers
         public JsonResult Read()
         {
             return Json(_iFRole.Read("Name"));
+
         }
         [HttpPost]
         public JsonResult ReadAssignedRole(int id)

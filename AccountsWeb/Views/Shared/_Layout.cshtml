@@ -1,4 +1,4 @@
-﻿@using System.Web.Optimization;
+@using System.Web.Optimization;
 @using AccountsWebAuthentication.Helper;
 <!DOCTYPE html>
 <html>
@@ -61,7 +61,25 @@
                 <li><a href="~/Home/About"><i class="fa fa-info" aria-hidden="true"></i> About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">@WindowsUser.Username</a></li>
+                <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">@WindowsUser.Username</a>
+                
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="nav-link" href="~/User">
+                                <i class="fa fa-list" aria-hidden="true"></i>
+                                Sign out
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="~/User/Create">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                Change password
+                            </a>
+                        </li>
+                    </ul>
+                
+                </li>
+
             </ul>
         </div>
     </nav>

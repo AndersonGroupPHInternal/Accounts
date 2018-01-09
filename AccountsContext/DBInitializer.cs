@@ -16,6 +16,7 @@ namespace AccountsContext
                 {
                     Name = "AccountAdministrator",
                     Description = "This role can access all modules with regards in Accounts."
+
                 });
             base.Seed(context);
         }

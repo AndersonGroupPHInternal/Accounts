@@ -1,15 +1,14 @@
-﻿
 <input type="hidden" name="UserId" value="@Model.UserId" />
 @{
     Html.RenderPartial("_AuditColumns");
 }
 <div class="form-group">
     <label for="IsActive">IsActive</label>
-    <input @(Model.IsActive ? "checked" : "")  id="IsActive" name="IsActive" type="checkbox" value="true">
+    <input @(Model.IsActive ? "checked" : "")  id="IsActive" name="Is Active" type="checkbox" value="true" >
 </div>
 <div class="form-group" ng-controller="EmployeeController as model" ng-init="model.Initialise(@Model.EmployeeId)">
     <label for="EmployeeId">Employee</label>
-    <input type="hidden" class="form-control" id="EmployeeId" name="EmployeeId" value="{{model.Employee.EmployeeId}}">
+    <input type="hidden" class="form-control" id="EmployeeId" name="Employee Id" value="{{model.Employee.EmployeeId}}" required>
     <ui-select ng-model="model.Employee">
         <ui-select-match placeholder="Select employee...">
             <span ng-bind="$select.selected.FirstName + '  ' + $select.selected.MiddleName + ' ' + $select.selected.LastName"></span>
@@ -23,9 +22,7 @@
 </div>
 <div class="form-group">
     <label for="Username">Username</label>
-    <input required type="text" class="form-control" id="Username" name="Username" placeholder="Username" value="@Model.Username">
-    
-    
+    <input type="text" class="form-control" id="Username" name="Username" placeholder="Username" value="@Model.Username" required>
 </div>
 <div class="form-group" ng-controller="RoleController as model" ng-init="model.Initialise(@Model.UserId)">
     <label>Role</label>
@@ -38,7 +35,7 @@
         </ui-select-choices>
     </ui-select>
     <div ng-repeat="assignedRole in model.AssignedRoles track by $index">
-        <input type="hidden" class="form-control" name="UserRoles[{{$index}}].RoleId" value="{{assignedRole.RoleId}}">
+        <input type="hidden" class="form-control" name="UserRoles[{{$index}}].RoleId" value="{{assignedRole.RoleId}}" required >
     </div>
 </div>
 <div class="form-group">

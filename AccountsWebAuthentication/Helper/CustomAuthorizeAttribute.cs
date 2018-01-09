@@ -14,8 +14,8 @@ namespace AccountsWebAuthentication.Helper
         private string RedirectController;
         private string RedirectMethod;
 
-        public string[] AllowedRoles { get; set; }
 
+        public string[] AllowedRoles { get; set; }
         private IFUser _iFUser;
         private IDUser _iDUser;
         private IDRole _iDRole;
