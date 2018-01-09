@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace AccountsWeb.Controllers
 {
-    [CustomAuthorize(AllowedRoles = new string[] { "AccountAdministrator" })]
+    [CustomAuthorize(AllowedRoles = new string[] { "AccountAdministrator"})]
 
     public class RoleController : BaseController
     {
@@ -16,33 +16,32 @@ namespace AccountsWeb.Controllers
         }
 
         #region Create
-        [HttpGet]                                       //added
-        public ActionResult Create()                    //added
-        {                                               //added
-            return View(new Role());                    //added
-        }                                           //added
-        [HttpPost]                          //added
-        public ActionResult Create(Role role)       //added
-        {                                           //added
-            var createdRole = _iFRole.Create(UserId, role); //added
-            return RedirectToAction("Index");   //added
-        }                                       //added
+        [HttpGet]
+        public ActionResult Create()    
+        {
+            return View(new Role());
+        }
+        [HttpPost]
+        public ActionResult Create(Role role)
+        {
+            var createdRole = _iFRole.Create(UserId, role);
+            return RedirectToAction("Index");
+        }
         #endregion
 
         #region Read
-        [HttpGet]                           //added
-        public ActionResult Index()         //added
-        {                                   //added
-            return View();                  //added
-        }                                   //added
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public JsonResult Read()
         {
             return Json(_iFRole.Read("Name"));
 
         }
-
-   
-
         [HttpPost]
         public JsonResult ReadAssignedRole(int id)
         {
@@ -52,25 +51,25 @@ namespace AccountsWeb.Controllers
 
         #region Update
         [HttpGet]
-        public ActionResult Update(int id)      //added
-        {                                       //added
-            return View(_iFRole.Read(id));     //added
-        }                                       //added
-        [HttpPost]                                 //added
-        public ActionResult Update(Role role)       //added
-        {                                       //added
-            var createdRole = _iFRole.Update(UserId, role);     //added
-            return RedirectToAction("Index");       //added
-        }                                           //added
+        public ActionResult Update(int id)
+        {
+            return View(_iFRole.Read(id));
+        }
+        [HttpPost]
+        public ActionResult Update(Role role)
+        {
+            var createdRole = _iFRole.Update(UserId, role);
+            return RedirectToAction("Index");
+        }
         #endregion
 
         #region Delete
-        [HttpDelete]                       //added
-        public JsonResult Delete(int id)        //added
-        {                                       //added
-            _iFRole.Delete(id);             //added
-            return Json(string.Empty);          //added
-        }                       //added
+        [HttpDelete]
+        public JsonResult Delete(int id)
+        {
+            _iFRole.Delete(id);
+            return Json(string.Empty);
+        }
         #endregion
     }
 }

@@ -1,4 +1,4 @@
-﻿
+
 @{
     ViewBag.Title = "Index";
 }
@@ -12,20 +12,20 @@
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-hover table-sm table-bordered ">
-                <thead>
-                    <tr class="thead-inverse">
-                        <th>User Id</th>
-                        <th>Is Active</th>
-                        <th>Employee Id</th>
-                        <th>Username</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Middle Name</th>
-                        <th>Roles</th>
-                        <th>Actions</th>
+                 <thead>  
+                <tr>
+                        <th class="text-center">User ID</th>
+                        <th class="text-center">Is Active</th>
+                        <th class="text-center">Employee ID</th>
+                        <th class="text-center">Username</th>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Middle Name</th>
+                        <th class="text-center">Role</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                     <tr class="clickableRow" ng-repeat="user in model.Users" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(user.UserId)" ng-init="model.UpdateEmployee(user)">
                         <td><span ng-bind="user.UserId"></span></td>
                         <td><span ng-bind="user.IsActive"></span></td>
@@ -41,7 +41,7 @@
                                 </li>
                             </ul>
                         </td>
-                        <td ng-click="$event.originalEvent.dropdown = true">
+                        <td class="text-center" ng-click="$event.originalEvent.dropdown = true">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                                     <span class="caret"></span>

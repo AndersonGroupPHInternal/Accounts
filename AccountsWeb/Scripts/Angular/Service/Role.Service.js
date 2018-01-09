@@ -29,13 +29,14 @@
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
         }
-        function Delete(roleId) {                       //added
-            return $http({                              //added
-                method: 'DELETE',                       //added
-                url: '/Role/Delete/' + roleId,          //added                 
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }    //added
-            });                 //added
-        }                       //added
+
+        function Delete(roleId) {
+            return $http({
+                method: 'DELETE',
+                url: '/Role/Delete/' + roleId,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            });
+        }
     }
 })();
 

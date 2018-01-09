@@ -1,4 +1,5 @@
 ﻿using AccountsFunction;
+using AccountsData;
 using System;
 using System.Linq;
 using System.Web;
@@ -13,12 +14,16 @@ namespace AccountsWebAuthentication.Helper
         private string RedirectController;
         private string RedirectMethod;
 
-        public CustomAuthorizeAttribute(bool allowAnonymous)
+
+        public string[] AllowedRoles { get; set; }
+        private IFUser _iFUser;
+        private IDUser _iDUser;
+        private IDRole _iDRole;
+        private IFRole _iFRole;
+
+        public CustomAuthorizeAttribute()
         {
-            AllowAnonymous = allowAnonymous;
-            RedirectController = string.Empty;
-            RedirectMethod = string.Empty;
-            AllowedRoles = new string[0];
+            _iFUser = new FUser();
         }
 
         public CustomAuthorizeAttribute(bool allowAnonymous, string[] allowedRoles)
@@ -44,20 +49,16 @@ namespace AccountsWebAuthentication.Helper
             RedirectController = redirectController;
             RedirectMethod = redirectMethod;
         }
-
-        private IFUser _iFUser;
-
-        public CustomAuthorizeAttribute()
-        {
-            _iFUser = new FUser();
-        }
-
-        public string[] AllowedRoles { get; set; }
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             string currentUserlogged = WindowsUser.Username;
             try
             {
+                _iDUser = new DUser();
+                _iDRole = new DRole();
+                _iFUser = new FUser(_iDUser);
+                _iFRole = new FRole(_iDRole);
+
                 return _iFUser.IsMethodAccessible(currentUserlogged, AllowedRoles.ToList());
             }
             catch (Exception ex)

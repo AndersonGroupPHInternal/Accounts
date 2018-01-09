@@ -26,6 +26,7 @@
                 method: 'DELETE',
                 url: '/User/Delete/' + userId,
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+
             });
         }
     }

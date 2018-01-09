@@ -1,4 +1,3 @@
-﻿
 <input type="hidden" name="RoleId" value="@Model.RoleId" />
 @{
     Html.RenderPartial("_AuditColumns");
@@ -7,17 +6,28 @@
     <div class="form-group">
         <label>Role</label>
 
-        <input type="text" name="Name" class="form-control" placeholder="Enter a Role" value="@Model.Name" required />
-        <br />
-        <br />
+        <input required type="text" autocomplete="off" name="Name" class="form-control" placeholder="Enter a Role" value="@Model.Name"/>
+        <br/>
         <label>Description</label>
-        <input type="text" name="Description" class="form-control" placeholder="Enter a Description" value="@Model.Description" required />
-    </div>
-
+        <input required type="text" autocomplete="off" name="Description" class="form-control" placeholder="Description" value="@Model.Description" />
+        
+        @*<div class="form-group" ng-controller="RoleController as model" ng-init="model.Initialise(@Model.RoleId)">
+            <label>Description 2 </label>
+            <ui-select multiple ng-model="model.AssignedDescriptions">
+                <ui-select-match placeholder="Select Description(s)...">
+                    {{$item.Description}}
+                </ui-select-match>
+                <ui-select-choices repeat="role in (model.Roles | filter: $select.search) track by $index">
+                    <span ng-bind="role.Description"></span>
+                </ui-select-choices>
+            </ui-select>
+            <div ng-repeat="assignedDescriptions in model.AssignedDescriptions track by $index">
+                <input type="hidden" class="form-control" name="Description" value="@Model.Description">
+            </div>
+        </div>
+    </div>*@
 </div>
 
 <div class="form-group">
-
-    <br/>
-    <input type="submit" class="btn btn-primary" value="Submit"  />
+    <input type="submit" class="btn btn-primary" value="Submit" />
 </div>

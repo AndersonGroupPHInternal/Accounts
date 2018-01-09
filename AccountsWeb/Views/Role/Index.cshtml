@@ -1,4 +1,6 @@
-﻿@{
+
+@{
+
     ViewBag.Title = "Index";
 }
 
@@ -13,22 +15,23 @@
             <table class="table table-hover table-sm table-bordered">
                 <thead>
                     <tr class="thead-inverse">
-                        <th>Role</th>
-                        <th>Description</th>
-                        <th>Actions</th>
+                        <th class="text-center">Role</th>
+                        <th class="text-center">Description</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickableRow" ng-repeat="role in model.Roles" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(role.RoleId)" ng-init="model.UpdateRole(role)">
+                    <tr class="clickableRow text-center" ng-repeat="role in model.Roles" ng-click="$event.originalEvent.dropdown || model.GoToUpdatePage(role.RoleId)" ng-init="model.UpdateRole(role)">
+
                         <td>
                             <span ng-bind="role.Name"></span>
                         </td>
 
                         <td>
-                            <span ng-bind="role.Description"></span>
+                            <span id="ac" ng-bind="role.Description"></span>
                         </td>
 
-                        <td ng-click="$event.originalEvent.dropdown = true">
+                        <td class="text-center" ng-click="$event.originalEvent.dropdown = true">
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                                     <span class="caret"></span>
