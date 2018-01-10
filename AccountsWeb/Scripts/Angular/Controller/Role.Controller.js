@@ -5,6 +5,7 @@
         .module('App')
         .controller('RoleController', RoleController);
 
+
     RoleController.$inject = ['$filter', '$window', 'RoleService'];
 
     function RoleController($filter,$window, RoleService) {
@@ -17,13 +18,14 @@
 
         vm.GoToUpdatePage = GoToUpdatePage;
         vm.Initialise = Initialise;
+
         vm.UpdateRole = UpdateRole;
         vm.Delete = Delete;
 
         function Initialise(userId) {
             vm.UserId = userId;
             Read();
-            if (vm.UserId !== undefined)
+       if (vm.UserId !== undefined)
             ReadAssignedRole();
         }
         function GoToUpdatePage(roleId) {
@@ -32,6 +34,7 @@
         function UpdateRole(role) {
             role.AssignedRoles = $filter('filter')(vm.AssignedRoles, { roleId: role.RoleId })[0];
         }
+      
         function Read() {
             RoleService.Read()
                 .then(function (response) {

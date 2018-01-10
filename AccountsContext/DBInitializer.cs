@@ -15,7 +15,8 @@ namespace AccountsContext
                 new ERole
                 {
                     Name = "AccountAdministrator",
-                    Description = "Survey - Pay - AndersonCRM - AndersonForms - HROnline - AIMS - Accounts - AccountsExternal - AndersonWorklogs - ELogbook"
+                    Description = "This role can access all modules with regards in Accounts."
+
                 });
             base.Seed(context);
         }

@@ -32,6 +32,7 @@ namespace AccountsFunction
         }
         #endregion
 
+
         #region Read
         public Role Read(int roleId)
         {
@@ -105,6 +106,7 @@ namespace AccountsFunction
         }
         private List<Role> Roles(List<ERole> eRoles)
         {
+            
             return eRoles.Select(a => new Role
             {
                 CreatedDate = a.CreatedDate,
